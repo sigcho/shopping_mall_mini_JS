@@ -1,0 +1,107 @@
+:root {
+  /* color */
+  --color-black: #3f454d;  /*전체 색을 먼저 변수로 저장한다*/
+  --color-white: #ffffff;  /*변수로 저장해서 좋은점은 여기서 변경하면 전체 변경된다*/
+  --color-blue: #3b88c3;
+  --color-yellow: #fbbe28;
+  --color-pink: #fd7f84;
+  --color-light-grey: #dfdfdf;
+
+  /*size*/
+  --base-space: 8px;
+  --size-button: 60px;
+  --size-border: 4px;
+  --size-thumbnail: 50px;
+  --font-size: 18px;
+
+  /*animation*/
+  --animation-duration: 300ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {  
+  height: 100vh;  /*body 높이가 뷰포트로 나타나야 내용이 가운데로 온다 */
+  background-color: var(--color-black); /*배경색 지정, var()안에 변수를 사용*/
+  display: flex;  /*가운데에 내용을 넣기 위해, flexbox로 지정*/
+  flex-direction: column;  /*한줄에 한덩어리씩 나오게 하려면 column로 지정*/
+  justify-content: center;  /*수평축에서 가운데로 지정*/
+  align-items: center;  /*수직축에서 가운데로 지정*/
+}
+
+.logo {
+  cursor: pointer;  /*클릭할 수 있는  버튼이라는 것을 pointer로 바뀜으로 알려줌*/
+  transition: transform var(--animation-duration) ease;  /*:root에 공통으로 등록, 천천히 커지는 애니메이션*/
+}
+
+.btn {
+  background-color: transparent;  /*버튼 배경을 투명으로 만든다*/
+  border: none;  /*테두리 없애기*/
+  outline: none;  /*외곽선 없애기*/
+  cursor: pointer;  /*그림 버튼에도 포인터 커서*/
+  transition: transform var(--animation-duration) ease;  /*그림 버튼에도 애니메이션*/
+  margin-right: var(--base-space);  /*버튼이 너무 붙어 있다, 오른쪽 마진을 준다, :root에 공통으로 등록*/
+}
+
+.btn:hover,
+.logo:hover {  
+  transform: scale(1.1);  /*커서가 올라가면 커지는 변형*/
+}
+
+.buttons { /*버튼 섹션 전체*/
+  display: flex;  /*전체를 플렉스 박스로 만든다*/
+  align-items: center;  /*높이를 중앙으로 한다*/
+}
+
+.imgBtn {  /*그림 버튼 너비, 높이 지정*/
+  width: var(--size-button);  /*:root에 공통적으로 버튼 사이즈 등록*/
+  height: var(--size-button);
+}
+
+.colorBtn {  /*색 버튼 꾸미기*/
+  font-size: var(--font-size);  /*:root에 공통적으로 폰트 크기 등록*/
+  padding: calc(var(--base-space)*2);  /*색 버튼의 영역 키운다, 패딩을 공통 space의 2배로 한다*/
+  border-radius: var(--size-border)  /*색 버튼 테두리 둥글게 한다, :root에 공통으로 등록*/
+}
+
+.blue {  /*파랑 버튼 꾸미기, CSS의 스타일 상속으로 .blue로만 써도 된다*/
+  background-color: var(--color-blue);
+}
+
+.yellow {
+  background-color: var(--color-yellow);
+}
+
+.pink {
+  background-color: var(--color-pink);
+}
+
+.items {
+  /*background-color: salmon; 임의로 지정해서 디자인 편하게하기, 확인후 지우기*/
+  width: 60%;  /*픽셀 보다는 %로 지정*/
+  height: 60%;
+  list-style: none;  /*앞에 리스트 아이콘 없애기*/
+  padding-left: 0;  /*콘솔 창에서 확인하면 패딩값있다, 패딩값 없앤다*/
+  overflow-y: scroll;  /*목록에서만 스크롤이 된다, 페이지 전체 스크롤X*/
+}
+
+.item {
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center; /*수직으로 가운데 정렬*/
+  padding: var(--base-space); /*흰 배경과 item 사이에 패딩준다*/
+  margin-bottom: var(--base-space);  /*목록 사이에 마진을 준다*/
+}
+
+.item__thumbnail {
+  width: var(--size-thumbnail); /*:root에서 공통으로 지정한다*/
+  height: var(--size-thumbnail);
+}
+
+.item__description {
+  margin-left: var(--base-space);  /*그림과 텍스트 공간 만들기*/
+  font-size: var(--font-size);  
+}
+
